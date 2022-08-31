@@ -1,0 +1,8 @@
+.dashboard-wrapper {
+  height: calc(100vh - 12rem);
+  align-items: flex-start;
+
+  main > div > div {
+    @apply bg-white;
+  }
+}
