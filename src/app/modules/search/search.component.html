@@ -1,1 +1,40 @@
-<p>search works!</p>
+<div>
+  <form novalidate autocomplete="off" [formGroup]="searchMovieForm" (ngSubmit)="submitMovie()">
+    <p>make options for type?? & year plot</p>
+    <div class="">
+      <label class="my-2">
+        <input placeholder="Search by movie title" type="text" formControlName="title" class="">
+        <span *ngIf="searchMovieFormSubmitted && searchMovieForm.get('title')!.errors?.['required']">
+          *Please add a title 
+        </span>                       
+      </label>
+    </div>
+    <div>
+      <button type="submit">
+        Search
+      </button>
+    </div>
+  </form>   
+   
+  <div *ngIf="displayResults">
+    <ng-container *ngIf="movies; else loading">
+      <div *ngIf="movies.length === 0">
+        <p>We could not find a movie that matches your search</p>
+      </div>
+      <!-- //TODO change below once correct mapping in service. -->
+      <div *ngIf="movies.length > 0">
+        <!-- //TODO use an ng for here to loop through array. then add result card. -->
+        <img [src]="movies[0].Poster" style="width:100px;height:100px;">
+        <p>{{movies[0].Title}}</p>
+        <p>{{movies[0].Plot}}</p>
+      </div>
+    </ng-container>
+    <ng-template #loading>
+  <!-- <div class="bg-white bg-opacity-50 flex items-center justify-center mt-8 text-center w-full z-20 py-40">
+                  <booqos-loader></booqos-loader>
+                </div> -->
+                <p>its loading</p>              
+    </ng-template>
+</div>
+
+    
