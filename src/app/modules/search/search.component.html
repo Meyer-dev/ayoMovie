@@ -1,48 +1,57 @@
-<div>
+<div class="background">
   <form novalidate autocomplete="off" [formGroup]="searchMovieForm" (ngSubmit)="submitMovie()">
     <p>make options for type?? & year plot</p>
-    <div class="">
-      <label class="my-2">
-        <input placeholder="Search by movie title" type="text" formControlName="title" class="">
+    <div>
+      <label>
+        <mat-form-field appearance="standard">
+          <mat-label>Search by movie title</mat-label>
+          <input matInput formControlName="title">
+        </mat-form-field>
         <span *ngIf="searchMovieFormSubmitted && searchMovieForm.get('title')!.errors?.['required']">
           *Please add a title 
         </span>                       
       </label>
     </div>
     <div>
-      <button type="submit">
-        Search
-      </button>
+      <button type="submit" mat-fab color="primary"></button>
     </div>
   </form>   
    
   <div *ngIf="displayResults">
     <ng-container *ngIf="movies; else loading">
       <div *ngIf="movies.length === 0">
-        <p>We could not find a movie that matches your search</p>
+        <iframe src="https://embed.lottiefiles.com/animation/103661"></iframe>
+        <div>
+          <p>Sorry, we could not find a movie that matches your search</p>
+          <p>Lets try look for something else</p>
+        </div>
       </div>
       <!-- //TODO change below once correct mapping in service. -->
-      <div *ngIf="movies.length > 0">
+      <div class="results" *ngIf="movies.length > 0">
         <!-- //TODO use an ng for here to loop through array. then add result card. -->
-        <img [src]="movies[0].Poster" style="width:100px;height:100px;">
-        <p>Title: {{movies[0].Title}}</p>
-        <p>Actors: {{movies[0].Actors}}</p>
-        <p>Awards: {{movies[0].Awards}}</p>
-        <p>Director: {{movies[0].Director}}</p>
-        <p>Genre: {{movies[0].Genre}}</p>
-        <p>Language: {{movies[0].Language}}</p>
-        <p>Plot: {{movies[0].Plot}}</p>
-        <p>Ratings: {{movies[0].Ratings}}</p>
-        <p>Released: {{movies[0].Ratings}}</p>
-        <p>Runtime: {{movies[0].Runtime}}</p>
-        <p>Year: {{movies[0].Year}}</p>
-        <p>IMDB Rating: {{movies[0].imdbRating}}</p>
-        <!-- //TODO:handle cases where info above is not provided. -->
+        <mat-card>
+          <mat-card-title>{{movies[0].Title}}</mat-card-title>
+          <mat-card-content>
+            <img [src]="movies[0].Poster">
+            <p>Actors: {{movies[0].Actors}}</p>
+            <p>Awards: {{movies[0].Awards}}</p>
+            <p>Director: {{movies[0].Director}}</p>
+            <p>Genre: {{movies[0].Genre}}</p>
+            <p>Language: {{movies[0].Language}}</p>
+            <p>Plot: {{movies[0].Plot}}</p>
+            <p>Ratings: {{movies[0].Ratings}}</p>
+            <p>Released: {{movies[0].Ratings}}</p>
+            <p>Runtime: {{movies[0].Runtime}}</p>
+            <p>Year: {{movies[0].Year}}</p>
+            <p>IMDB Rating: {{movies[0].imdbRating}}</p>
+            <!-- //TODO:handle cases where info above is not provided. -->
+          </mat-card-content>
+        </mat-card>
       </div>
     </ng-container>
     <ng-template #loading>
       <movie-loader></movie-loader>                      
     </ng-template>
+  </div>
 </div>
-
     
