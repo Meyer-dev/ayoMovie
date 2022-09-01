@@ -17,12 +17,12 @@ export class MovieService {
     const year = data.year;
     const plot_format = 'short';
     //TODO: place url credentials somewhere else in shared ...? dont place const for all, use data.
-    const apiURL = `http://www.omdbapi.com/?apiey=f590ae4d&t=${title}&y=${year}&type=${type}&plot=${plot_format}`;
+    const apiURL = `http://www.omdbapi.com/?apikey=f590ae4d&t=${title}&y=${year}&type=${type}&plot=${plot_format}`;
     return this.http
       .get(apiURL)
-      .pipe(
+      .pipe(//TODO abstrat below for more general case
         map((body: any) => 
-            {if (body.Title){
+            {if (body.Response === "True"){
                 const movies = []
                 movies.push(body);
                 return movies 

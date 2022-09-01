@@ -25,8 +25,19 @@
       <div *ngIf="movies.length > 0">
         <!-- //TODO use an ng for here to loop through array. then add result card. -->
         <img [src]="movies[0].Poster" style="width:100px;height:100px;">
-        <p>{{movies[0].Title}}</p>
-        <p>{{movies[0].Plot}}</p>
+        <p>Title: {{movies[0].Title}}</p>
+        <p>Actors: {{movies[0].Actors}}</p>
+        <p>Awards: {{movies[0].Awards}}</p>
+        <p>Director: {{movies[0].Director}}</p>
+        <p>Genre: {{movies[0].Genre}}</p>
+        <p>Language: {{movies[0].Language}}</p>
+        <p>Plot: {{movies[0].Plot}}</p>
+        <p>Ratings: {{movies[0].Ratings}}</p>
+        <p>Released: {{movies[0].Ratings}}</p>
+        <p>Runtime: {{movies[0].Runtime}}</p>
+        <p>Year: {{movies[0].Year}}</p>
+        <p>IMDB Rating: {{movies[0].imdbRating}}</p>
+        <!-- //TODO:handle cases where info above is not provided. -->
       </div>
     </ng-container>
     <ng-template #loading>

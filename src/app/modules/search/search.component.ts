@@ -52,6 +52,7 @@ export class SearchComponent implements OnInit {
   }
 
   // The catchError operator is used below to return an empty array if an error has occured;
+  // TODO:update result for above error, maybe use toaster etc.
   // The observable will not error out anymore.
   searchMovie(data: IMoviePreference){
     this.movies = null;
