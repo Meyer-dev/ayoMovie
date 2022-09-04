@@ -3,12 +3,12 @@ div{
 }
 
 img{
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
 }
 
 ::ng-deep .mat-card{
-    border-radius: 25px !important;
+    border-radius: 35px !important;
 }
 
 .background{
@@ -21,6 +21,8 @@ img{
 
 .results{
     padding-bottom: 35px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 

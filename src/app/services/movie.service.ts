@@ -15,7 +15,7 @@ export class MovieService {
     const title = data.title;
     const type = 'movie';
     const year = data.year;
-    const plot_format = 'short';
+    const plot_format = 'full';
     //TODO: place url credentials somewhere else in shared ...? dont place const for all, use data.
     const apiURL = `http://www.omdbapi.com/?apikey=f590ae4d&t=${title}&y=${year}&type=${type}&plot=${plot_format}`;
     return this.http

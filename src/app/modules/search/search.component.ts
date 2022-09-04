@@ -46,6 +46,7 @@ export class SearchComponent implements OnInit {
         //   'Make sure that all mandatory fields are filled',
         //   'Validation error!'
         // );
+       
         console.log("add valid search values")
         //TODO:add toaters!
     }
