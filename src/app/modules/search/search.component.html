@@ -1,8 +1,8 @@
-<div class="bg-movie-burnt-50 h-full mb-20">
+<div class="bg-movie-burnt-50 h-full w-full mb-20">
  
-  <div class="bg-white rounded-xl p-5 mx-3">
-    <form class="flex flex-row" novalidate autocomplete="off" [formGroup]="searchMovieForm" (ngSubmit)="submitMovie()">
-      <div>
+  <div class="xxs:w-full xs:w-9/12 md:w-8/12 lg:w-6/12 px-4 h-15 mx-auto">
+    <form class="flex flex-row justify-between bg-white rounded-xl px-2" novalidate autocomplete="off" [formGroup]="searchMovieForm" (ngSubmit)="submitMovie()">
+      <div class="my-auto">
         <label class="text-lg">
           <mat-form-field appearance="standard">
             <!-- <mat-label>Search by movie title</mat-label> -->
@@ -13,8 +13,8 @@
           </span>                       
         </label>
       </div>
-      <div class="ml-2">
-        <button type="submit" mat-fab color="primary">
+      <div class="ml-2 my-auto">
+        <button type="submit" color="primary">
           <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon>
         </button>
       </div>
@@ -23,29 +23,28 @@
    
   <div class="pt-5" *ngIf="displayResults">
     <ng-container *ngIf="movies; else loading">
-      <div class="flex flex-col justify-center" *ngIf="movies.length === 0">
+      <div class="flex flex-col justify-center px-4" *ngIf="movies.length === 0">
         <iframe src="https://embed.lottiefiles.com/animation/103661"></iframe>
         <div class="text-white text-center text-xl">
-          <p>Sorry, we could not find a movie that matches your search</p>
+          <p>Sorry, we could not find a movie that matches your search.</p>
           <p>Lets try look for something else</p>
         </div>
       </div>
-      <!-- //TODO change below once correct mapping in service. -->
       <div *ngIf="movies.length > 0">
         <!-- //TODO use an ng for here to loop through array. then add result card. -->
-        <div class="bg-white rounded-xl p-5 mx-3">
-          <label class="block text-xl">{{movies[0].Title}}<span class="ml-1">({{movies[0].Year}})</span></label>
+        <div class="text-white p-5 mx-3">
+          <label class="block text-2xl">{{movies[0].Title}}<span class="ml-1 text-xl">({{movies[0].Year}})</span></label>
           
           <label class="text-md"><span class="font-semibold">{{movies[0].Runtime}}</span> | <span class="font-semibold">{{movies[0].Genre}}</span></label>
-          <img class="h-150 rounded-lg my-2" [src]="movies[0].Poster" alt="">
+          <img class="h-150 rounded-lg my-2" [src]="movies[0].Poster" alt="No Image Available">
           <!-- //TODO:place alt image -->
           <p>{{movies[0].Plot}}</p>
-          <p>Starring: {{movies[0].Actors}}</p>
-          <p>Awards: {{movies[0].Awards}}</p>
-          <p>Director: {{movies[0].Director}}</p>
-          <p>Language: {{movies[0].Language}}</p>
-          <p>Ratings: {{movies[0].Ratings}}</p>
-          <p>Released: {{movies[0].Ratings}}</p>
+          <p class="text-lg font-semibold">Starring: <span class="text-md font-normal">{{movies[0].Actors}}</span></p>
+          <p class="text-lg font-semibold">Awards: <span  class="text-md font-normal">{{movies[0].Awards}}</span></p>
+          <p class="text-lg font-semibold">Director: <span class="text-md font-normal">{{movies[0].Director}}</span></p>
+          <p class="text-lg font-semibold">Language: <span class="text-md font-normal">{{movies[0].Language}}</span></p>
+          <p class="text-lg font-semibold">Ratings: <span class="text-md font-normal" >{{movies[0].Ratings}}</span></p>
+          <p class="text-lg font-semibold">Released: <span class="text-md font-normal">{{movies[0].Ratings}}</span></p>
           
           <p>IMDB Rating: {{movies[0].imdbRating}}</p>
           <!-- //TODO:handle cases where info above is not provided. -->
