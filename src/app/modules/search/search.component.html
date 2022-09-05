@@ -20,7 +20,9 @@
       </div>
     </form>
   </div>    
-   
+  <div class="flex w-full flex-col justify-center mt-8" *ngIf="!displayResults">
+    <iframe src="https://embed.lottiefiles.com/animation/72235"></iframe>
+  </div>
   <div class="pt-5" *ngIf="displayResults">
     <ng-container *ngIf="movies; else loading">
       <div class="flex flex-col justify-center px-4" *ngIf="movies.length === 0">
