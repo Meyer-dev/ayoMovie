@@ -1,20 +1,25 @@
 <div class="background">
-  <form novalidate autocomplete="off" [formGroup]="searchMovieForm" (ngSubmit)="submitMovie()">
-    <div>
-      <label>
-        <mat-form-field appearance="standard">
-          <!-- <mat-label>Search by movie title</mat-label> -->
-          <input matInput placeholder="Search movie title" formControlName="title">
-        </mat-form-field>
-        <span *ngIf="searchMovieFormSubmitted && searchMovieForm.get('title')!.errors?.['required']">
-          *Please add a title 
-        </span>                       
-      </label>
-    </div>
-    <div>
-      <button type="submit" mat-fab color="primary"></button>
-    </div>
-  </form>   
+  <!-- <mat-card class="search">
+    <mat-card-content> -->
+      <form novalidate autocomplete="off" [formGroup]="searchMovieForm" (ngSubmit)="submitMovie()">
+        <div>
+          <label>
+            <mat-form-field appearance="standard">
+              <!-- <mat-label>Search by movie title</mat-label> -->
+              <input matInput placeholder="Search movie title" formControlName="title">
+            </mat-form-field>
+            <span *ngIf="searchMovieFormSubmitted && searchMovieForm.get('title')!.errors?.['required']">
+              *Please add a title 
+            </span>                       
+          </label>
+        </div>
+        <div>
+          <button type="submit" mat-fab color="primary"></button>
+        </div>
+      </form>
+    <!-- </mat-card-content>
+  </mat-card> -->
+     
    
   <div *ngIf="displayResults">
     <ng-container *ngIf="movies; else loading">

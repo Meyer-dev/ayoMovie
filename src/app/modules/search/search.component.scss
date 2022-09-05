@@ -7,22 +7,31 @@ img{
     width: 200px;
 }
 
+form{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+}
+
 ::ng-deep .mat-card{
-    border-radius: 35px !important;
+    border-radius: 30px !important;
 }
 
 .background{
     background-color: #cc5500;
 }
 
-.centered{
-  justify-content: center;  
+.search{
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .results{
     padding-bottom: 35px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 
