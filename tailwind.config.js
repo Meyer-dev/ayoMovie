@@ -28,6 +28,9 @@ const movieColors = {
   clay: {
     50: '#d97557',
   },
+  burnt: {
+    50: '#cc5500'
+  },
   offwhite: {
     50: '#f8f8f8',
     100: '#EBECF0'
