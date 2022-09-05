@@ -38,9 +38,10 @@
         <mat-card>
           <mat-card-title>{{movies[0].Title}}</mat-card-title>
           <mat-card-content>
-            <p>{{movies[0].Year}}</p>
-            <p>{{movies[0].Genre}}</p>
-            <img [src]="movies[0].Poster">
+            <label>{{movies[0].Year}}</label>
+            <label>{{movies[0].Genre}}</label>
+            <img [src]="movies[0].Poster" alt="">
+            <!-- //TODO:place alt image -->
             <p>{{movies[0].Plot}}</p>
             <p>Starring: {{movies[0].Actors}}</p>
             <p>Awards: {{movies[0].Awards}}</p>
@@ -48,7 +49,9 @@
             <p>Language: {{movies[0].Language}}</p>
             <p>Ratings: {{movies[0].Ratings}}</p>
             <p>Released: {{movies[0].Ratings}}</p>
-            <p>Runtime: {{movies[0].Runtime}}</p>
+            <span><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon>
+              {{movies[0].Runtime}}
+            </span>
             <p>IMDB Rating: {{movies[0].imdbRating}}</p>
             <!-- //TODO:handle cases where info above is not provided. -->
           </mat-card-content>
