@@ -20,8 +20,7 @@ export class SearchComponent implements OnInit {
 
   // The below two value are used to manage the search result behaviour and data.
   displayResults: boolean = false;
-  movies: any;
-  data: IMoviePreference; 
+  movies: any; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,8 +48,8 @@ export class SearchComponent implements OnInit {
   submitMovie() {
     this.searchMovieFormSubmitted = true;
     if (this.searchMovieForm.valid) {
-      this.data = this.searchMovieForm.value; 
-      this.searchMovie();
+      const data = this.searchMovieForm.value; 
+      this.searchMovie(data);
       this.searchMovieFormSubmitted = false;
     }
   }
