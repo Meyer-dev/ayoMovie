@@ -20,8 +20,7 @@ export class SearchComponent implements OnInit {
 
   // The below two value are used to manage the search result behaviour and data.
   displayResults: boolean = false;
-  movies: any;
-  data: IMoviePreference; 
+  movies: any; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,8 +48,8 @@ export class SearchComponent implements OnInit {
   submitMovie() {
     this.searchMovieFormSubmitted = true;
     if (this.searchMovieForm.valid) {
-      this.data = this.searchMovieForm.value; 
-      this.searchMovie();
+      const data = this.searchMovieForm.value; 
+      this.searchMovie(data);
       this.searchMovieFormSubmitted = false;
     }
   }
@@ -58,10 +57,10 @@ export class SearchComponent implements OnInit {
   // The catchError operator is used below to return an empty array if an error has occured;
   // the observable will not error out anymore.
   // If a result is returned the "movies" array value is set.
-  searchMovie(){
+  searchMovie(data: IMoviePreference){
     this.movies = null;
     this.displayResults = true;
-    this.movieService.searchMovie(this.data).pipe(
+    this.movieService.searchMovie(data).pipe(
       catchError(() => of([]))
       ).subscribe((movies) => {
         this.movies = movies;
