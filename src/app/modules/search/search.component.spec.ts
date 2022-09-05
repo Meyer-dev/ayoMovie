@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
@@ -31,6 +30,5 @@ describe('SearchComponent', () => {
       .withContext('after search initialised')
       .toBe(true);
   });
-
 
 });
