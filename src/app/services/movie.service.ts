@@ -22,7 +22,6 @@ export class MovieService {
     const year = data.year;
     // plot_format value options are "full" or "short". "full" has been implemented here to access the full plot description.
     const plot_format = 'full';
-    //TODO: place url credentials somewhere else in shared ...? dont place const for all, use data.
     const apiURL = `http://www.omdbapi.com/?apikey=${this.apiKey}&t=${title}&y=${year}&type=${type}&plot=${plot_format}`;
     // The below data mapping could be further abstracted for a more general case
     // (i.e more movies returned by API) if the returned data structure was known.

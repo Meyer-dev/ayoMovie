@@ -8,7 +8,6 @@ import { SearchComponent } from './search.component';
      { path: '', redirectTo: 'search', pathMatch: 'full' },
      { path: 'search', component: SearchComponent},
     ])
-    //TODO:lazy load components.
  ];
 
  @NgModule({
