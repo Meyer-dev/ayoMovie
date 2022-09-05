@@ -1,14 +1,14 @@
 <div class="bg-movie-burnt-50 h-full mb-20">
  
-  <div class="bg-white rounded-xl p-5 mx-3 mb-2">
+  <div class="bg-white rounded-xl p-5 mx-3">
     <form class="flex flex-row" novalidate autocomplete="off" [formGroup]="searchMovieForm" (ngSubmit)="submitMovie()">
       <div>
-        <label>
+        <label class="text-lg">
           <mat-form-field appearance="standard">
             <!-- <mat-label>Search by movie title</mat-label> -->
             <input matInput placeholder="Search movie title" formControlName="title">
           </mat-form-field>
-          <span *ngIf="searchMovieFormSubmitted && searchMovieForm.get('title')!.errors?.['required']">
+          <span class="text-md" *ngIf="searchMovieFormSubmitted && searchMovieForm.get('title')!.errors?.['required']">
             *Please add a title 
           </span>                       
         </label>
@@ -21,7 +21,7 @@
     </form>
   </div>    
    
-  <div *ngIf="displayResults">
+  <div class="pt-5" *ngIf="displayResults">
     <ng-container *ngIf="movies; else loading">
       <div class="flex flex-col justify-center" *ngIf="movies.length === 0">
         <iframe src="https://embed.lottiefiles.com/animation/103661"></iframe>
@@ -34,10 +34,10 @@
       <div *ngIf="movies.length > 0">
         <!-- //TODO use an ng for here to loop through array. then add result card. -->
         <div class="bg-white rounded-xl p-5 mx-3">
-          <label class="block">{{movies[0].Title}}<span class="ml-1">({{movies[0].Year}})</span></label>
+          <label class="block text-xl">{{movies[0].Title}}<span class="ml-1">({{movies[0].Year}})</span></label>
           
-          <label><span class="font-semibold">{{movies[0].Runtime}}</span> | <span class="font-semibold">{{movies[0].Genre}}</span></label>
-          <img class="h-150" [src]="movies[0].Poster" alt="">
+          <label class="text-md"><span class="font-semibold">{{movies[0].Runtime}}</span> | <span class="font-semibold">{{movies[0].Genre}}</span></label>
+          <img class="h-150 rounded-lg my-2" [src]="movies[0].Poster" alt="">
           <!-- //TODO:place alt image -->
           <p>{{movies[0].Plot}}</p>
           <p>Starring: {{movies[0].Actors}}</p>
