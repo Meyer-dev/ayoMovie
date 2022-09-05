@@ -1,12 +1,21 @@
+import { HttpClientModule } from '@angular/common/http';
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { MovieService } from 'src/app/services/movie.service';
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
+  let debugElement: DebugElement;
 
+  // Arrange
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ ReactiveFormsModule, HttpClientModule ],
+      providers: [ MovieService ],
       declarations: [ SearchComponent ]
     })
     .compileComponents();
@@ -14,21 +23,36 @@ describe('SearchComponent', () => {
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    debugElement = fixture.debugElement;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('#searchMovie() should toggle #displayResults', () => {
-    const comp = component;
-    expect(comp.displayResults)
-      .withContext('empty at first')
-      .toBe(false);
-    comp.searchMovie();
-    expect(comp.displayResults)
-      .withContext('after search initialised')
-      .toBe(true);
-  });
+  it('results are fetched and displayed', () => {
+    // Act
+      //Set Form Inputs
+      const titleInput = debugElement.query(
+        By.css('[data-testid="title-input"]')
+      );
+      titleInput.nativeElement.value = 'Gladiator';
+      // Dispatch input event
+      
+  
+      // Find the button element
+      const searchButton = debugElement.query(
+        By.css('[data-testid="search-button"]')
+      );
+      // Fire a click event on the search button
+      searchButton.triggerEventHandler('click', null);
+      // Re-render the Component
+      fixture.detectChanges();
 
+    // Assert:
+      //Expect that the results are displayed.
+      expect(component.displayResults)
+       .withContext('after search initiated')
+       .toEqual(true);
+  });
 });
