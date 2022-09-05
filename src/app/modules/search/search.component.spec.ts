@@ -20,4 +20,17 @@ describe('SearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('#searchMovie() should toggle #displayResults', () => {
+    const comp = component;
+    expect(comp.displayResults)
+      .withContext('empty at first')
+      .toBe(false);
+    comp.searchMovie();
+    expect(comp.displayResults)
+      .withContext('after search initialised')
+      .toBe(true);
+  });
+
+
 });
