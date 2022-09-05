@@ -23,37 +23,33 @@
    
   <div *ngIf="displayResults">
     <ng-container *ngIf="movies; else loading">
-      <div *ngIf="movies.length === 0">
+      <div class="flex flex-col justify-center" *ngIf="movies.length === 0">
         <iframe src="https://embed.lottiefiles.com/animation/103661"></iframe>
-        <div>
+        <div class="text-white text-center text-xl">
           <p>Sorry, we could not find a movie that matches your search</p>
           <p>Lets try look for something else</p>
         </div>
       </div>
       <!-- //TODO change below once correct mapping in service. -->
-      <div class="results" *ngIf="movies.length > 0">
+      <div *ngIf="movies.length > 0">
         <!-- //TODO use an ng for here to loop through array. then add result card. -->
-        <mat-card>
-          <mat-card-title>{{movies[0].Title}}</mat-card-title>
-          <mat-card-content>
-            <label>{{movies[0].Year}}</label>
-            <label>{{movies[0].Genre}}</label>
-            <img [src]="movies[0].Poster" alt="">
-            <!-- //TODO:place alt image -->
-            <p>{{movies[0].Plot}}</p>
-            <p>Starring: {{movies[0].Actors}}</p>
-            <p>Awards: {{movies[0].Awards}}</p>
-            <p>Director: {{movies[0].Director}}</p>
-            <p>Language: {{movies[0].Language}}</p>
-            <p>Ratings: {{movies[0].Ratings}}</p>
-            <p>Released: {{movies[0].Ratings}}</p>
-            <span><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon>
-              {{movies[0].Runtime}}
-            </span>
-            <p>IMDB Rating: {{movies[0].imdbRating}}</p>
-            <!-- //TODO:handle cases where info above is not provided. -->
-          </mat-card-content>
-        </mat-card>
+        <div class="bg-white rounded-xl p-5 mx-3">
+          <label class="block">{{movies[0].Title}}<span class="ml-1">({{movies[0].Year}})</span></label>
+          
+          <label><span class="font-semibold">{{movies[0].Runtime}}</span> | <span class="font-semibold">{{movies[0].Genre}}</span></label>
+          <img class="h-150" [src]="movies[0].Poster" alt="">
+          <!-- //TODO:place alt image -->
+          <p>{{movies[0].Plot}}</p>
+          <p>Starring: {{movies[0].Actors}}</p>
+          <p>Awards: {{movies[0].Awards}}</p>
+          <p>Director: {{movies[0].Director}}</p>
+          <p>Language: {{movies[0].Language}}</p>
+          <p>Ratings: {{movies[0].Ratings}}</p>
+          <p>Released: {{movies[0].Ratings}}</p>
+          
+          <p>IMDB Rating: {{movies[0].imdbRating}}</p>
+          <!-- //TODO:handle cases where info above is not provided. -->
+        </div>
       </div>
     </ng-container>
     <ng-template #loading>
