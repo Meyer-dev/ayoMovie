@@ -32,23 +32,29 @@
       </div>
       <div *ngIf="movies.length > 0">
         <div *ngFor="let movie of movies">
-          <div class="text-white p-5 mx-3">
-            <label class="block text-2xl mb-2">{{movie.Title}}<span class="ml-1 text-xl">({{movie.Year}})</span></label>
+          <div class="text-white p-5 mx-2">
+            <label class="block text-2xl mb-1">{{movie.Title}}<span class="ml-1 text-xl">({{movie.Year}})</span></label>
             <label class="text-md"><span class="font-semibold">{{movie.Runtime}}</span> | <span class="font-semibold">{{movies[0].Genre}}</span></label>
-            <img class="h-150 rounded-lg my-2" [src]="movie.Poster" alt="No Image Available">
-            <p>{{movie.Plot}}</p>
-            <p class="text-lg font-semibold">Starring: <span class="text-md font-normal">{{movie.Actors}}</span></p>
-            <p class="text-lg font-semibold">Awards: <span  class="text-md font-normal">{{movie.Awards}}</span></p>
-            <p class="text-lg font-semibold">Director: <span class="text-md font-normal">{{movie.Director}}</span></p>
-            <p class="text-lg font-semibold">Language: <span class="text-md font-normal">{{movie.Language}}</span></p>
-            <label class="text-lg font-semibold">Ratings:</label>
-            <div *ngFor="let rating of movie.Ratings" class="text-lg font-semibold"> 
-              <span class="font-normal">{{rating.Source}}:</span>
-              <span class="font-semibold ml-2">{{rating.Value}}</span>
+            <div class="grid xxxs:grid-cols-1 md:grid-cols-3 mt-2">
+              <div class="col-span-1 mx-auto">
+                <img class="rounded-lg" [src]="movie.Poster" alt="No Image Available">
+              </div>
+              <div class="col-span-2 pt-2 px-2">
+                <p>{{movie.Plot}}</p>
+                <p class="text-lg font-semibold">Starring: <span class="text-md font-normal">{{movie.Actors}}</span></p>
+                <p class="text-lg font-semibold">Awards: <span  class="text-md font-normal">{{movie.Awards}}</span></p>
+                <p class="text-lg font-semibold">Director: <span class="text-md font-normal">{{movie.Director}}</span></p>
+                <p class="text-lg font-semibold">Language: <span class="text-md font-normal">{{movie.Language}}</span></p>
+                <label class="text-lg font-semibold">Ratings:</label>
+                <div *ngFor="let rating of movie.Ratings" class="text-lg font-semibold"> 
+                  <span class="font-normal">{{rating.Source}}:</span>
+                  <span class="font-semibold ml-2">{{rating.Value}}</span>
+                </div>
+                <span class="text-lg font-normal">IMDB:</span>
+                <span class="text-lg font-semibold ml-2">{{movie.imdbRating}}/10</span>
+                <p class="text-lg font-semibold mt-1">Released: <span class="text-md font-normal">{{movie.Released}}</span></p>
+              </div>
             </div>
-            <span class="text-lg font-normal">IMDB</span>
-            <span class="text-lg font-semibold ml-2">{{movie.imdbRating}}</span>
-            <p class="text-lg font-semibold mt-1">Released: <span class="text-md font-normal">{{movie.Released}}</span></p>
           </div>
         </div>
       </div>
