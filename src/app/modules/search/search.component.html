@@ -1,12 +1,12 @@
 <div class="bg-movie-burnt-50 h-full w-full mb-20">
  
   <div class="xxs:w-full xs:w-9/12 md:w-8/12 lg:w-6/12 px-4 h-15 mx-auto">
-    <form class="flex flex-row justify-between bg-white rounded-xl px-2" novalidate autocomplete="off" [formGroup]="searchMovieForm" (ngSubmit)="submitMovie()">
+    <form class="flex flex-row justify-between bg-white rounded-xl px-2" novalidate autocomplete="off" [formGroup]="searchMovieForm">
       <div class="my-auto">
         <label class="text-lg">
           <mat-form-field appearance="standard">
             <!-- <mat-label>Search by movie title</mat-label> -->
-            <input matInput placeholder="Search movie title" formControlName="title">
+            <input matInput placeholder="Search movie title" data-testid="title-input" formControlName="title">
           </mat-form-field>
           <span class="text-md" *ngIf="searchMovieFormSubmitted && searchMovieForm.get('title')!.errors?.['required']">
             *Please add a title 
@@ -14,7 +14,7 @@
         </label>
       </div>
       <div class="ml-2 my-auto">
-        <button type="submit" color="primary">
+        <button data-testid="search-button" (click)="submitMovie()" color="primary">
           <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon>
         </button>
       </div>
