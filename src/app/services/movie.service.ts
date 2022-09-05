@@ -26,7 +26,7 @@ export class MovieService {
     const apiURL = `http://www.omdbapi.com/?apikey=${this.apiKey}&t=${title}&y=${year}&type=${type}&plot=${plot_format}`;
     // The below data mapping could be further abstracted for a more general case
     // (i.e more movies returned by API) if the returned data structure was known.
-    // If the returned response value "False" the number of movies is set to 0 (i.e no movies).
+    // If the returned response value is "False" the number of movies is set to 0 (i.e no movies).
     return this.http
       .get(apiURL)
       .pipe( 
