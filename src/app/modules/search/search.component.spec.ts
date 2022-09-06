@@ -30,16 +30,23 @@ describe('SearchComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('results are fetched and displayed', () => {
+  it('title is entered and results displayed', () => {
     // Act
       //Set Form Inputs
       const titleInput = debugElement.query(
         By.css('[data-testid="title-input"]')
       );
       titleInput.nativeElement.value = 'Gladiator';
-      // Dispatch input event
-      
-  
+      // Dispatch synthetic input event
+      titleInput.nativeElement.dispatchEvent(new Event('input'));
+
+    // Assert:
+          //Expect that the title value to have changed.
+      expect(component.searchMovieForm.value.title)
+       .withContext('after search initiated')
+       .toEqual('Gladiator');
+
+    //Act   
       // Find the button element
       const searchButton = debugElement.query(
         By.css('[data-testid="search-button"]')
